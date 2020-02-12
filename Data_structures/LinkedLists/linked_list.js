@@ -114,27 +114,65 @@ class LinkedList {
 
     // TODO: Implement the get method here
     get(index) {
-
+        if (index < 0 || index > this.length) {
+            return null;
+        }
+        let counter = 0;
+        let currentNode = this.head;
+        while (currentNode) {
+            if (this.counter === index) {
+                return currentNode;
+            }
+            counter++;
+            curentNode = currentNode.next;
+        }
     }
 
     // TODO: Implement the set method here
     set(index, val) {
-
+        let node = this.get(index);
+        if (node === null) return false;
+        node.value = val;
+        return true;
     }
 
     // TODO: Implement the insert method here
     insert(index, val) {
-
+        // if (index < 0 || index >= this.length) return false;
+        // let node = new Node(val);
+        // let prevNode = index === 0 ? this.get(index) : this.get(index - 1);
+        // let nextNode = this.get(index);
+        // prevNode.next = node;
+        // node.next = nextNode;
+        // this.length++;
+        // return true;
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) return this.addToHead(val);
+        if (index === this.length) return this.addToTail(val);
+        let node = new Node(val);
+        let prevNode = this.get(index - 1);
+        let nextNode = this.get(index);
+        node.next = nextNode;
+        prevNode.next = node;
+        this.length++;
+        return true;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
-
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this.removeHead();
+        if (index === this.length - 1) return this.removeTail();
+        let removedNode = this.get(index);
+        let prevNode = this.get(index - 1);
+        prevNode.next = removedNode.next;
+        this.length--;
+        return removedNode;
     }
 
     // TODO: Implement the size method here
     size() {
-
+        return this.length;
     }
 }
 
