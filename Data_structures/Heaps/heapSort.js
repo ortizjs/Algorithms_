@@ -15,13 +15,8 @@ function heapify(array, n, i){
    let rightIdx = 2 * i + 2;
    let leftChild = leftIdx >= n ? -Infinity : array[leftIdx];
    let rightChild = rightIdx >= n ? -Infinity : array[rightIdx];
+   let swapIdx = leftChild < rightChild ? rightIdx : leftIdx;
    if (array[i] > leftChild && array[i] > rightChild) return;
-   let swapIdx;
-   if (leftChild < rightChild) {
-       swapIdx = rightIdx;
-   } else {
-       swapIdx = leftIdx;
-   }
    swap(array, i, swapIdx);
    heapify(array, n, swapIdx);
 }
