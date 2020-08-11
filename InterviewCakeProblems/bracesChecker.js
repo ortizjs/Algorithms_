@@ -17,3 +17,5 @@ function braces(values) {
     }
     return "YES"
 }
+
+console.log(braces())
