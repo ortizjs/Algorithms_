@@ -41,4 +41,3 @@ newStack.push(8)
 newStack.push(2)
 newStack.push(20)
 
-print(newStack)
