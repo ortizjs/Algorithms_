@@ -1,11 +1,12 @@
 function mergeMeetingTimes(meetingTimes) {
-    let sorted_meetings = meetingTimes.sort((a,b) => {
+    let sortedMeetings = meetingTimes.sort((a,b) => {
         return a.startTime - b.startTime
-    });
-    let mergedMeetings = [sorted_meetings[0]]
-    for (let i = 1; i < sorted_meetings.length; i++){
+    })
+    let mergedMeetings = [sortedMeetings[0]]
+    
+    for (let i = 1; i < sortedMeetings.length; i++) {
         let lastMergedMeeting = mergedMeetings[mergedMeetings.length - 1]
-        let currentMeeting = sorted_meetings[i];
+        let currentMeeting = sortedMeetings[i]
         if (currentMeeting.startTime <= lastMergedMeeting.endTime) {
             lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, currentMeeting.endTime)
         } else {
