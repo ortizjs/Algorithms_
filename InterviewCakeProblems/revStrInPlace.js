@@ -1,14 +1,16 @@
 function reverseStrInPlace(str){
-    let chars = str.split("");
-    let lower = 0;
-    let upper = chars.length - 1;
-    while (lower < upper){
-        let temp = chars[lower];
-        [chars[lower], chars[upper]] = [chars[upper], temp]
-        lower++
-        upper--
-    }
-    return chars.join("")
+   let inputStr = str.split("");
+   let start = 0;
+   let end = inputStr.length - 1;
+   let temp;
+   while (start < end) {
+       temp = inputStr[start];
+       inputStr[start] = inputStr[end];
+       inputStr[end] = temp;
+       start++;
+       end--;
+   }
+   return inputStr.join("")
 }
 
 console.log(reverseStrInPlace("Jonnatan"))
