@@ -24,25 +24,25 @@ function mergeSortedArrays(myList, aliceList){
 
 
 function mergeSortedArraysICImplementation(myArray, aliceArray) {
-    let mergedSortedArray = [];
+    let mergedSortedArrays = [];
     let myCurrentIdx = 0;
     let aliceCurrentIdx = 0;
-    let mergedCurrentIdx = 0;
+    let currentMergedIdx = 0;
+    
+    while (currentMergedIdx < (myArray.length + aliceArray.length)) {
+        let isMyArrayExhausted = myCurrentIdx >= myArray.length;
+        let isAliceArraysExhausted = aliceCurrentIdx >= aliceArray.length;
 
-    while (mergedCurrentIdx < (myArray.length + aliceArray.length)) {
-        const isMyArrayExhausted = myCurrentIdx >= myArray.length;
-        const isAliceArrayExhausted = aliceCurrentIdx >= aliceArray.length;
-
-        if (!isMyArrayExhausted && (isAliceArrayExhausted || myArray[myCurrentIdx] < aliceArray[aliceCurrentIdx])) {
-            mergedSortedArray[mergedCurrentIdx] = myArray[myCurrentIdx];
+        if (!isMyArrayExhausted && (isAliceArraysExhausted || myArray[myCurrentIdx] <= aliceArray[aliceCurrentIdx])) {
+            mergedSortedArrays[currentMergedIdx] = myArray[myCurrentIdx];
             myCurrentIdx++;
         } else {
-            mergedSortedArray[mergedCurrentIdx] = aliceArray[aliceCurrentIdx];
+            mergedSortedArrays[currentMergedIdx] = aliceArray[aliceCurrentIdx];
             aliceCurrentIdx++;
         }
-        mergedCurrentIdx++;
+        currentMergedIdx++;
     }
-    return mergedSortedArray
+    return mergedSortedArrays;
 }
 my_list = [3, 4, 6, 10, 11, 15, 20, 21]
 alices_list = [1, 5, 8, 12, 14, 19]
