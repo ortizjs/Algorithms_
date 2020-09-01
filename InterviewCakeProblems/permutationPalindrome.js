@@ -1,15 +1,15 @@
 function permutationPalindrome(str){
-    let unpaired = new Set()
-    for (let i = 0; i < str.length; i++){
-        let char = str[i]
-        if (unpaired.has(char)) {
-            unpaired.delete(char)
-        } else {
-            unpaired.add(char)
-        }
-    }
-    
-    return unpaired.size <= 1
+   let distinctChars = new Set();
+
+   for (let i = 0; i < str.length; i++) {
+       let currentChar = str[i];
+       if (distinctChars.has(currentChar)) {
+           distinctChars.delete(currentChar);
+       } else {
+           distinctChars.add(currentChar)
+       }
+   }
+   return distinctChars.size <= 1
 }
 
 console.log(permutationPalindrome('civic'))
