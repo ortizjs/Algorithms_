@@ -1,9 +1,7 @@
 class wordCloud{
     constructor(input){
-        this.input = input;
-        this.punctuations = new Set([",", ".", "!", "?", "-", "/", "'", ":", ";"])
-        this.capitals = "ABCDEFGHIJKMLNOPQRSTUVWXYZ";
         this.wordCloudHash = {};
+        this.splitwords(input)
     }
 
     isChar(char) {
@@ -13,80 +11,83 @@ class wordCloud{
     splitwords(input) {
         let wordStartIdx = 0;
         let wordLength = 0;
-        let words = []
 
         for (let i = 0; i < input.length; i++) {
             let currentChar = input[i];
-            if (this.isChar(currentChar)) {
+            if (i === input.length - 1) {
+                if (this.isChar(currentChar)) {
+                    wordLength += 1;
+                }
+                if (wordLength > 0) {
+                    let word = input.slice(wordStartIdx, wordStartIdx + wordLength);
+                    this.addWordsToHash(word);
+                }
+            } else if (currentChar === " " || currentChar === "—") { 
+                if (wordLength > 0) {
+                    let word = input.slice(wordStartIdx, wordStartIdx + wordLength);
+                    this.addWordsToHash(word);
+                    wordLength = 0
+                }
+            } else if (currentChar === ".") {
+                if (i < input.length - 1 && input[i + 1] === ".") {
+                    if (wordLength > 0) {
+                        let word = input.slice(wordStartIdx, wordStartIdx + wordLength);
+                        this.addWordsToHash(word);
+                        wordLength = 0;
+                    }
+                }
+            } else if (this.isChar(currentChar) || currentChar === "\'") {
                 if (wordLength === 0) {
                     wordStartIdx = i;
                 }
-                wordLength++;
+                wordLength += 1;
+            } else if (currentChar === "-") {
+                if (i > 0 && this.isChar(input[i + 1])) {
+                    if (wordLength === 0) {
+                        wordStartIdx = i
+                    }
+                    wordLength += 1;
+                }
             } else {
-                let word = input.slice(wordStartIdx, wordStartIdx + wordLength);
-                words.push(word)
-                wordLength = 0;
+                if (wordLength > 0) {
+                    let word = input.slice(wordStartIdx, wordStartIdx + wordLength);
+                    this.addWordsToHash(word);
+                    wordLength = 0;
+                }
             }
         }
-        return words;
     }
 
 
     addWordsToHash(word) {
-        if (this.wordCloudHash[word] != undefined) {
-            this.wordCloudHash[word]++;
+        let newCount;
+
+        if (word in this.wordCloudHash) {
+            newCount = this.wordCloudHash[word] + 1;
+            this.wordCloudHash[word] = newCount;
+        } else if (word.toLowerCase() in this.wordCloudHash) {
+            newCount = this.wordCloudHash[word] + 1;
+            this.wordCloudHash[word] = newCount;
+        } else if (this.capitalize(word) in this.wordCloudHash) {
+            newCount = this.wordCloudHash[this.capitalize(word)] + 1;
+            this.wordCloudHash[word] = newCount;
+            delete this.wordCloudHash[this.capitalize(word)];
         } else {
             this.wordCloudHash[word] = 1;
         }
     }
+    
+    capitalize(word) {
+        return word[0].toUpperCase() + word.slice(1);
+    }
+
 }
     
-//     let start, end = 0;
 
-//     for (let i = 0; i < input.length; i++) {
-//         let currentChar = input[i];
-//         let word;
-//         if (currentChar === " ") {
-//             // end = i;
-//             word = input.slice(start, i);
-//             wordCloudChecker(word, wordCloudHash);
-//             start = i + 1;
-//         } else if (punctuations.has(currentChar)) {
-//             // end = i
-//             word = input.slice(start, i);
-//             wordCloudChecker(word, wordCloudHash);
-//             start = i + 2;
-//         }
-//     }
-//     return wordCloudHash;
-
-// }
-
-// function wordCloudChecker(word, hash) {
-//     let capitals = "ABCDEFGHIJKMLNOPQRSTUVWXYZ";
-//     if (capitals.indexOf(word[0]) != -1) {
-//         if (hash[word] != undefined) {
-//             hash[word] += 1;
-//         } else if (hash[word.toLowerCase()] != undefined) {
-//             hash[word] = hash[word.toLowerCase()] + 1;
-//             delete hash[word.toLowerCase()];
-//         } 
-//         else {
-//             hash[word] = 1;
-//         }
-    
-//     } else if (hash[word[0] + word.slice(1, word.length)] != undefined) {
-//         hash[word[0] + word.slice(1,word.length)] += 1
-//     } else if (hash[word.toLowerCase()] != undefined) {
-//         hash[word] += 1;
-//     } else if (hash[word] != undefined) {
-//         hash[word] += 1;
-//     } else {
-//         hash[word] = 1;
-//     }
-// }
 
 let input1 = "After beating the eggs, Dana read the next step:"
 let input2 = "Add milk and eggs, then add flour and sugar."
-console.log(wordCloud(input1));
-console.log(wordCloud(input2));
+newWordCloud = new wordCloud(input1);
+newWordCloud2 = new wordCloud(input2);
+console.log(newWordCloud);
+console.log(newWordCloud2);
