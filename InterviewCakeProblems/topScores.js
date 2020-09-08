@@ -1,19 +1,19 @@
 function topScores(scores, maxScore){
-    let count_array = new Array(maxScore + 1).fill(0)
-    let sorted_scores = []
+    let countingArray = new Array(maxScore + 1).fill(0);
+    let sortedArray = [];
 
-    for (var i = 0; i < scores.length; i++){
-        let score = scores[i]
-        count_array[score]++
+    for (let i = 0; i < scores.length; i++) {
+        let score = scores[i];
+        countingArray[score] += 1;
     }
-    
-    for (let j = count_array.length - 1; j >= 0; j--) {
-        let count = count_array[j];
-        while (count > 0) {
-            sorted_scores.push(j)
-            count--
+
+    for (let k = countingArray.length - 1; k >= 0; k--) {
+        let num = countingArray[k];
+        while (num > 0) {
+            sortedArray.push(k)
+            num--;
         }
     }
-    return sorted_scores
+    return sortedArray;
 }
 console.log(topScores([37, 89, 41, 65, 91, 53], 100))
