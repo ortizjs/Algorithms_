@@ -7,7 +7,7 @@ function topScores(scores, maxScore){
         countingArray[score] += 1;
     }
 
-    for (let k = countingArray.length - 1; k >= 0; k--) {
+    for (let k = maxScore; k >= 0; k--) {
         let num = countingArray[k];
         while (num > 0) {
             sortedArray.push(k)
