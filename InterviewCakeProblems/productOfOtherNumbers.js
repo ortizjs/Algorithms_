@@ -35,7 +35,7 @@ console.log(" ")
 function getProductsOfAllIntsExceptAtIndex2(intsArray) {
 
     // ```This implementation does not full work yet...
-    //     the second to last product is not calculated correctly for example:
+    //     some of the products are not calculated correctly for example:
     //     input array = [1,7,3,4]
     //     output array gives [84,12,7,21] but it should be:
     //     right output being [84,12,28,21]```
