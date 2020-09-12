@@ -1,40 +1,39 @@
 function orderChecker(takeOutOrders, dineInOrders, servedOrders){
-    let takeOutCurrentIdx = 0;
-    let dineInCurrentIdx = 0;
-    let servedCurrentIdx = 0;
+   let takeOutIdx = 0;
+   let dineInIdx = 0;
+   let currentServedIdx = 0;
 
-    while (servedCurrentIdx < servedOrders.length) {
-        let currentServedOrder = servedOrders[servedCurrentIdx];
+   while (takeOutIdx < takeOutOrders.length || dineInIdx < dineInOrders.length) {
+       let currentServedOrder = servedOrders[currentServedIdx]
+       if (currentServedOrder === dineInOrders[dineInIdx]) {
+           dineInIdx++;
+       } else if (currentServedOrder === takeOutOrders[takeOutIdx]) {
+           takeOutIdx++
+       } else {
+           return false;
+       }
+       currentServedIdx++;
+   }
 
-        if (dineInCurrentIdx <= dineInOrders.length - 1 && (currentServedOrder === dineInOrders[dineInCurrentIdx])) {
-            dineInCurrentIdx++;
-        } else if (takeOutCurrentIdx <= takeOutOrders.length - 1 && (currentServedOrder == takeOutOrders[takeOutCurrentIdx])) {
-            takeOutCurrentIdx++;
-        } else {
-            return false;
-        }
-        servedCurrentIdx++;
-    }
-
-    if (dineInCurrentIdx != dineInOrders.length || takeOutCurrentIdx != takeOutOrders.length) {
+   if (currentServedIdx < dineInIdx || currentServedIdx < takeOutIdx) {
         return false;
-    }
-    
-    return true;
+   }
+   return true;
 }
 
 function orderCheckerRecur(takeOutOrders, dineInOrders, servedOrders, takeOutIdx=0, dineInIdx=0, servedIdx=0) {
     if (servedIdx === servedOrders.length - 1) {
-        return true;
+        return true
     }
-    if (servedOrders[servedIdx] === takeOutOrders[takeOutIdx]) {
+
+    if ((takeOutIdx < takeOutOrders.length) && servedOrders[servedIdx] === takeOutOrders[takeOutIdx]) {
         takeOutIdx++;
-    } else if (servedOrders[servedIdx] === dineInOrders[dineInIdx]) {
-        dineInIdx++
+    } else if (dineInIdx < dineInOrders.length && servedOrders[servedIdx] === dineInOrders[dineInIdx]) {
+        dineInIdx++;
     } else {
         return false;
     }
-    servedIdx++;
+    servedIdx++
     return orderCheckerRecur(takeOutOrders, dineInOrders, servedOrders, takeOutIdx, dineInIdx, servedIdx);
 }
 
