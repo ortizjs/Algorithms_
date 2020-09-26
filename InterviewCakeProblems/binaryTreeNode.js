@@ -15,3 +15,5 @@ class binaryTreeNode {
         return this.right;
     }
 }
+
+module.exports = binaryTreeNode;
