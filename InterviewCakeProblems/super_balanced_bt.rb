@@ -21,10 +21,10 @@ def super_balanced(root)
         node = node_pair[0]
         depth = node_pair[1]
 
-        if root.left == nil && root.right == nil
+        if node.left == nil and node.right == nil
             if depths.index(depth) == nil
-                depths << depth 
-                if depths.length > 2 || depths.length == 2 && (depths[0] - depths[1]).abs > 1
+                depths << depth
+                if depths.length > 2 || (depths.length == 2 && (depths[0] - depths[1]).abs > 1)
                     return false
                 end
             end
@@ -47,11 +47,15 @@ c = BinaryTreeNode.new('c');
 d = BinaryTreeNode.new('d');
 e = BinaryTreeNode.new('e');
 f = BinaryTreeNode.new('f');
+g = BinaryTreeNode.new('g');
+h = BinaryTreeNode.new('h');
 
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
+f.right = g
+# g.right = h
 
 puts super_balanced(a);
