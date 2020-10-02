@@ -21,8 +21,8 @@ def super_balanced(root)
         node = node_pair[0]
         depth = node_pair[1]
 
-        if node.left == nil and node.right == nil
-            if depths.index(depth) == nil
+        if !node.left and !node.right
+            if !depths.index(depth)
                 depths << depth
                 if depths.length > 2 || (depths.length == 2 && (depths[0] - depths[1]).abs > 1)
                     return false
@@ -30,7 +30,7 @@ def super_balanced(root)
             end
         else
             if node.left
-                stack. << [node.left, depth + 1]
+                stack << [node.left, depth + 1]
             end
 
             if node.right
