@@ -1,31 +1,30 @@
 def merge_meeting_times(meeting_times):
     sorted_meeting_times = sorted(meeting_times)
     merged_meeting_times = [sorted_meeting_times[0]]
-    for i in range(1, len(sorted_meeting_times)):
-        current_meeting_time = sorted_meeting_times[i]
-        last_merged_meeting_time = merged_meeting_times[-1]
-        if current_meeting_time['startTime'] <= last_merged_meeting_time['endTime']:
-            last_merged_meeting_time['endTime'] = max(current_meeting_time['endTime'], last_merged_meeting_time['endTime'])
+    for current_meeting_start, current_meeting_end in sorted_meeting_times[1:]:
+        last_merged_start, last_merged_end = merged_meeting_times[-1]
+        if current_meeting_start <= last_merged_end:
+            merged_meeting_times[-1] = (last_merged_start, max(current_meeting_end, last_merged_end))
         else:
-            merged_meeting_times.append(current_meeting_time)
+            merged_meeting_times.append([current_meeting_start, current_meeting_end])
     return merged_meeting_times
     
 
-meeting_times1 = [{'startTime': 2, 'endTime': 3}, {'startTime': 6, 'endTime': 9}]
+meeting_times1 = [(2, 3), (6, 9)]
 meeting_times2 = [
-    {'startTime': 0, 'endTime': 1},
-    {'startTime': 3, 'endTime': 5},
-    {'startTime': 4, 'endTime': 8},
-    {'startTime': 10,'endTime': 12},
-    {'startTime': 9, 'endTime': 10},
+    (0, 1),
+    (3, 5),
+    (4, 8),
+    (10, 12),
+    (9, 10)
 ]
-meeting_times3 = [{'startTime': 1, 'endTime': 2}, {'startTime': 2, 'endTime': 3}]
-meeting_times4 = [{'startTime': 1, 'endTime': 5}, {'startTime': 2, 'endTime': 3}]
+meeting_times3 = [(1, 2), (2, 3)]
+meeting_times4 = [(1, 5), (2, 3)]
 meeting_times5 = [
-    {'startTime': 1, 'endTime': 10},
-    {'startTime': 2, 'endTime': 6},
-    {'startTime': 3, 'endTime': 5},
-    {'startTime': 7, 'endTime': 9},
+    (1, 10),
+    (2, 6),
+    (3, 5),
+    (7, 9)
 ]
 
 print(merge_meeting_times(meeting_times1))
