@@ -25,6 +25,7 @@ function reverseStringInPlace(chars, startIdx, endIdx) {
         startIdx++;
         endIdx--;
     }
+    message
 }
 
 const message = ['c', 'a', 'k', 'e', ' ',
