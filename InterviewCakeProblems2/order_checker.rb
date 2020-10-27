@@ -14,7 +14,7 @@ def order_checker(dine_in_orders, take_out_orders, served_orders)
         end
         served_idx += 1
     end
-    return false if dine_in_idx < dine_in_orders.length || take_out_idx < take_out_orders.length
+    return false if dine_in_idx != dine_in_orders.length || take_out_idx != take_out_orders.length
     true
 end
 
