@@ -3,6 +3,7 @@ function getRandom(floor, ceil) {
 }
 
 function inPlaceShuffle(arr) {
+    if (arr.length <= 1) return;
     for (let i = 0 ; i < arr.length; i++) {
         let randomIdx = getRandom(i, arr.length - 1)
         if (i != randomIdx) {
