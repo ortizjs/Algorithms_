@@ -27,14 +27,14 @@ def super_balanced(root)
     return true
 end
 
-a = BinaryTreeNode.new('a');
-b = BinaryTreeNode.new('b');
-c = BinaryTreeNode.new('c');
-d = BinaryTreeNode.new('d');
-e = BinaryTreeNode.new('e');
-f = BinaryTreeNode.new('f');
-g = BinaryTreeNode.new('g');
-h = BinaryTreeNode.new('h');
+a = BinaryTreeNode.new('a')
+b = BinaryTreeNode.new('b')
+c = BinaryTreeNode.new('c')
+d = BinaryTreeNode.new('d')
+e = BinaryTreeNode.new('e')
+f = BinaryTreeNode.new('f')
+g = BinaryTreeNode.new('g')
+h = BinaryTreeNode.new('h')
 
 a.left = b
 a.right = c
