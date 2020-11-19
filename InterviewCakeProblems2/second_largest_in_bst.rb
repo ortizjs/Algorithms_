@@ -83,69 +83,69 @@ def second_largest_in_bst(root)
     return second_largest
 end
 
-a = BinaryTreeNode.new(50);
-b = BinaryTreeNode.new(17);
-c = BinaryTreeNode.new(72);
-d = BinaryTreeNode.new(12);
-e = BinaryTreeNode.new(23);
-f = BinaryTreeNode.new(76);
-g = BinaryTreeNode.new(54);
-h = BinaryTreeNode.new(67);
-i = BinaryTreeNode.new(9);
-j = BinaryTreeNode.new(14);
-k = BinaryTreeNode.new(19);
+a = BinaryTreeNode.new(50)
+b = BinaryTreeNode.new(17)
+c = BinaryTreeNode.new(72)
+d = BinaryTreeNode.new(12)
+e = BinaryTreeNode.new(23)
+f = BinaryTreeNode.new(76)
+g = BinaryTreeNode.new(54)
+h = BinaryTreeNode.new(67)
+i = BinaryTreeNode.new(9)
+j = BinaryTreeNode.new(14)
+k = BinaryTreeNode.new(19)
 
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
-c.left = g;
-g.right = h;
-d.left = i;
-d.right = j;
-e.left = k;
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
+c.left = g
+g.right = h
+d.left = i
+d.right = j
+e.left = k
 
-p second_largest_in_bst(a);
+p second_largest_in_bst(a)
 
-aa = BinaryTreeNode.new(50);
-bb = BinaryTreeNode.new(17);
-cc = BinaryTreeNode.new(75);
-dd = BinaryTreeNode.new(12);
-ee = BinaryTreeNode.new(23);
-ff = BinaryTreeNode.new(76);
-gg = BinaryTreeNode.new(54);
-hh = BinaryTreeNode.new(67);
-ii = BinaryTreeNode.new(8);
-jj = BinaryTreeNode.new(14);
-kk = BinaryTreeNode.new(19);
+aa = BinaryTreeNode.new(50)
+bb = BinaryTreeNode.new(17)
+cc = BinaryTreeNode.new(75)
+dd = BinaryTreeNode.new(12)
+ee = BinaryTreeNode.new(23)
+ff = BinaryTreeNode.new(76)
+gg = BinaryTreeNode.new(54)
+hh = BinaryTreeNode.new(67)
+ii = BinaryTreeNode.new(8)
+jj = BinaryTreeNode.new(14)
+kk = BinaryTreeNode.new(19)
 
-aa.left = bb;
-aa.right = cc;
-bb.left = dd;
-bb.right = ee;
-cc.right = ff;
-cc.left = gg;
-gg.right = hh;
-dd.left = ii;
-dd.right = jj;
-ee.left = kk;
+aa.left = bb
+aa.right = cc
+bb.left = dd
+bb.right = ee
+cc.right = ff
+cc.left = gg
+gg.right = hh
+dd.left = ii
+dd.right = jj
+ee.left = kk
 
-p second_largest_in_bst(aa);
+p second_largest_in_bst(aa)
 
-aaa = BinaryTreeNode.new(50);
-bbb = BinaryTreeNode.new(30);
-ccc = BinaryTreeNode.new(80);
-ddd = BinaryTreeNode.new(20);
-eee = BinaryTreeNode.new(40);
-fff = BinaryTreeNode.new(70);
-ggg = BinaryTreeNode.new(90);
+aaa = BinaryTreeNode.new(50)
+bbb = BinaryTreeNode.new(30)
+ccc = BinaryTreeNode.new(80)
+ddd = BinaryTreeNode.new(20)
+eee = BinaryTreeNode.new(40)
+fff = BinaryTreeNode.new(70)
+ggg = BinaryTreeNode.new(90)
 
-aaa.left = bbb;
-aaa.right = ccc;
-bbb.left = ddd;
-bbb.right = eee;
-ccc.left = fff;
-ccc.right = ggg;
+aaa.left = bbb
+aaa.right = ccc
+bbb.left = ddd
+bbb.right = eee
+ccc.left = fff
+ccc.right = ggg
 
-p second_largest_in_bst(aaa);
+p second_largest_in_bst(aaa)
