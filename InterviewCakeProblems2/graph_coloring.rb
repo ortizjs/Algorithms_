@@ -23,13 +23,13 @@ def graph_coloring(graph, colors)
     end
 end
 
-a = GraphNode.new('a');
-b = GraphNode.new('b');
-c = GraphNode.new('c');
+a = GraphNode.new('a')
+b = GraphNode.new('b')
+c = GraphNode.new('c')
 
-a.neighbors.add(b);
-b.neighbors.add(a);
-c.neighbors.add(b);
+a.neighbors.add(b)
+b.neighbors.add(a)
+c.neighbors.add(b)
 b.neighbors.add(c)
 graph = [a,b,c]
 
