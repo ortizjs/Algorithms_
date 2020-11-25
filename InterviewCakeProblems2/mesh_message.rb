@@ -31,7 +31,7 @@ end
 def get_path(graph, start_node, end_node)
     if graph[start_node] == nil || graph[end_node] == nil
         error_node = graph[start_node] == nil ? start_node : end_node
-        raise Exception.new(error_node + "must be in the network!")
+        raise Exception.new(error_node + " must be in the network!")
     end
 
     nodes_to_visit = Queue.new();
@@ -88,5 +88,5 @@ p get_path(graph, "f", "g") ## [ 'f', 'g' ]
 p get_path(graph, "g", "f") ## [ 'g', 'f' ]
 p get_path(graph, "a", "a") ## ['a']
 p get_path(graph, "a", "f") ## null
-# p get_path(graph, "h", "a") ## Should raise exception
+p get_path(graph, "h", "a") ## Should raise exception
 # p get_path(graph, "a", "h") ## Should raise exception
