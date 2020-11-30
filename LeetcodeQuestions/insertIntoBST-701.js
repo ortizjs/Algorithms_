@@ -5,6 +5,7 @@ function TreeNode(val, left, right) {
 };
 
 function insertIntoBST(root, val) {
+    if (!root) return new TreeNode(val);
     let node = root;
 
     while (node) {
