@@ -1,5 +1,5 @@
-//AE's solution which is recursive approach with O(log n ) time abd O(n) space
-// worst time being O(n) and O(n) space:
+// AE's solution which is recursive approach with O(log(n)) time abd O(log(n)) space as well on average.
+// worst time being O(n) and O(n) space
 
 const { node } = require("prop-types");
 
@@ -21,9 +21,10 @@ function closesValueInBst(tree, target, closest) {
     }
 }
 
-//My solution which turned out to be iterative solution. Took this approach because although a recursive solution might come out and look cleaner
+// My solution which turned out to be iterative solution. Took this approach because although a recursive solution might come out and look cleaner
 // I would rather avoid the cost of memory taken by the recursive call stack.
-// My solution would be O(n) where n is the total number of nodes in the tree and the space would be O(n) as well. 
+// My solution would be O(log(n)) where n is the total number of nodes in the tree and the space would be O(log(n)) as well. on average.
+// Worst time would be O(n) time and space.
 
 function findClosestValueInBst(tree, target) {
     let root = tree;
