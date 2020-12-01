@@ -21,6 +21,34 @@ function closesValueInBst(tree, target, closest) {
     }
 }
 
+// AE Iterative solution
+// Average: O(log(n)) time | O(1) Space
+// Worst : O(n) time | O(1) Space:
+
+function findClosestValueInBst(tree, target) {
+    return findClosestValueInBstHelper(tree, target, tree.value);
+}
+
+function findClosestValueInBstHelper(tree, target, closest) {
+    let currentNode = tree;
+
+    while (currentNode) {
+        if (Math.abs(target - currentNode.value) < Math.abs(target - closest)) {
+            closest = currentNode.value;
+        }
+        if (target < currentNode.value) {
+            currentNode = currentNode.left;
+        } else if (target > currentNode.value) {
+            currentNode = currentNode.right;
+        } else {
+            break;
+        }
+    }
+    return closest;
+}
+
+
+
 // My solution which turned out to be iterative solution. Took this approach because although a recursive solution might come out and look cleaner
 // I would rather avoid the cost of memory taken by the recursive call stack.
 // My solution would be O(log(n)) where n is the total number of nodes in the tree and the space would be O(log(n)) as well. on average.
