@@ -11,7 +11,7 @@ class BSTIterator:
             return self.sorted_nodes[self.index]
 
     def hasNext(self):
-        return self.index < len(self.sorted_nodes)
+        return self.index < len(self.sorted_nodes) - 1
 
     def inOrder(self, root):
         if not root:

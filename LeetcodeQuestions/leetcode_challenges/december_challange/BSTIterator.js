@@ -47,5 +47,4 @@ BSTIterator.prototype.inOrder = function(root) {
     this.inOrder(root.left);
     this.orderedNodes.push(root.val);
     this.inOrder(root.right);
-    
 }
