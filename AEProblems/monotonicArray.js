@@ -9,7 +9,6 @@ function isMonotonic(array) {
         let first = array[i];
         let second = array[j];
         let third = array[j + 1]
-        console.log("first: ", first, "second: ", second, "third: ", third)
         if (first > second && second < third || first < second && second > third) {
             return false
         }
