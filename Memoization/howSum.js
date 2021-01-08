@@ -8,7 +8,7 @@ function howSum(targetSum, numbers, memo = {}) {
         let diffResult = howSum(diff, numbers, memo)
         if (diffResult !== null) {
             memo[targetSum] = [...diffResult, num]
-            return [...diffResult, num]
+            return memo[targetSum]
         }
     }
     memo[targetSum] = null;
