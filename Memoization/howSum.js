@@ -1,3 +1,6 @@
+//Brute force time: O(n^m) and space: O(m^2)
+//Memoized solution: O(n*m^2) space: O(m^2)
+
 function howSum(targetSum, numbers, memo = {}) {
     if (targetSum in memo) return memo[targetSum];
     if (targetSum === 0) return [];
