@@ -1,5 +1,6 @@
+// time: O(m * n), space: O(m * n)
 function gridTraveler(m, n) {
-    // let table = new Array(m + 1).fill(new Array(n + 1).fill(0))
+    // let table = new Array(m + 1).fill(new Array(n + 1).fill(0)) --> will not work as expected.
     let table = Array.from({ "length": m + 1 }, () => Array.from({ "length": n + 1 }, () => 0))
     table[1][1] = 1
     for (let i = 0; i <= m; i++) {
