@@ -1,22 +1,43 @@
-var maxOperations = function (nums, k, memo = {}) {
-    let sortedNums = nums.sort((a, b) => { return a - b });
-    let start = 0;
-    let end = nums.length - 1;
+var maxOperations = function (nums, k) {
     let counter = 0;
+    let map = {};
 
-    while (start < end) {
-        let sum = nums[start] + nums[end];
-        if (sum < k) {
-            start++;
-        } else if (sum > k) {
-            end--;
-        } else {
-            end--;
-            start++;
+    for (let num of nums) {
+        let diff = k - num;
+        if (diff in map) {
+            if (map[diff] === 1) {
+                delete map[diff];
+            } else {
+                map[diff]--;
+            }
             counter++;
+        } else {
+            if (!(num in map)) {
+                map[num] = 1;
+            } else {
+                map[num]++;
+            }
         }
     }
     return counter;
+    // let sortedNums = nums.sort((a, b) => { return a - b });
+    // let start = 0;
+    // let end = nums.length - 1;
+    // let counter = 0;
+
+    // while (start < end) {
+    //     let sum = nums[start] + nums[end];
+    //     if (sum < k) {
+    //         start++;
+    //     } else if (sum > k) {
+    //         end--;
+    //     } else {
+    //         end--;
+    //         start++;
+    //         counter++;
+    //     }
+    // }
+    // return counter;
     //     if (k in memo) return memo[k];
     //     if (k === 0) return 1;
     //     // if (k < 0) return -1;
