@@ -32,11 +32,56 @@ var romanToInt = function (s) {
 };
 
 
+var romanToInt2 = function (s) {
+    let bases = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+
+    let subs = {
+        "IV": 4,
+        "IX": 9,
+        "XL": 40,
+        "XC": 90,
+        "CD": 400,
+        "CM": 900
+    }
+
+    let counter = 0;
+
+
+    for (let i = 0; i < s.length; i++) {
+        let num = s[i];
+        let nums = s.slice(i, i + 2);
+
+        if (!subs[nums]) {
+            counter += bases[num]
+        } else {
+            counter += subs[nums];
+            i++;
+        }
+    }
+    return counter;
+};
+
+
+
 console.log(romanToInt("III"))
 console.log(romanToInt("IV"))
 console.log(romanToInt("IX"))
 console.log(romanToInt("LVIII"))
 console.log(romanToInt("MCMXCIV"))
+
+console.log(romanToInt2("III"))
+console.log(romanToInt2("IV"))
+console.log(romanToInt2("IX"))
+console.log(romanToInt2("LVIII"))
+console.log(romanToInt2("MCMXCIV"))
 /*
 As we are iterating over the chars, for every char that is either:
     - I: we can check if the next char is V or X and if so, return either 4 or 9
