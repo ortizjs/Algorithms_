@@ -11,49 +11,25 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function (l1, l2) {
-    if (!l1 && !l2) {
-        return null
-    }
-    if (!l1) {
-        return l2
-    } else if (!l2) {
-        return l1
-    }
+    let dummy = new ListNode(-1);
+    let newHead = dummy
 
-    let newNode;
-    let nodeOne = l1;
-    let nodeTwo = l2;
-
-    if (nodeOne.val <= nodeTwo.val) {
-        newNode = nodeOne
-        nodeOne = nodeOne.next
-    } else {
-        newNode = nodeTwo
-        nodeTwo = nodeTwo.next
-    }
-    let newHead = newNode;
-
-    while (nodeOne && nodeTwo) {
-        if (nodeOne.val <= nodeTwo.val) {
-            newNode.next = nodeOne;
-            nodeOne = nodeOne.next;
+    while (l1 && l2) {
+        if (l1.val <= l2.val) {
+            dummy.next = l1;
+            l1 = l1.next;
         } else {
-            newNode.next = nodeTwo;
-            nodeTwo = nodeTwo.next
+            dummy.next = l2;
+            l2 = l2.next;
         }
-        newNode = newNode.next
+        dummy = dummy.next
     }
+    if (l1) {
+        dummy.next = l1;
 
-    while (nodeOne) {
-        newNode.next = nodeOne
-        newNode = newNode.next
-        nodeOne = nodeOne.next
-    }
+    } else {
+        dummy.next = l2;
 
-    while (nodeTwo) {
-        newNode.next = nodeTwo
-        newNode = newNode.next
-        nodeTwo = nodeTwo.next
     }
-    return newHead;
+    return newHead.next
 };
