@@ -1,7 +1,6 @@
 function devowel(word) {
     let newWord = ""
     let vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"])
-    // console.log(vowels)
     for (let char of word) {
         if (vowels.has(char)) {
             newWord += "*"
