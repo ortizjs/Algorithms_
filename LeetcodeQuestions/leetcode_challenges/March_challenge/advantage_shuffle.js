@@ -6,8 +6,8 @@ function advantageCount(A, B) {
     let i = 0;
 
     for (let idx of indexesOfB) {
-        while (i < A.length && sortedA[i] < B[idx]) {
-            unused.push(sortedA[j]);
+        while (i < A.length && sortedA[i] <= B[idx]) {
+            unused.push(sortedA[i]);
             i++;
         }
 
