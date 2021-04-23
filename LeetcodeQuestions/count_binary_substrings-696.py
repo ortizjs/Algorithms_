@@ -1,4 +1,4 @@
-lass Solution(object):
+class Solution(object):
     def countBinarySubstrings(self, s):
         """
         :type s: str
