@@ -28,25 +28,55 @@
 // 
 
 
+// function repopulateGrid(rooms) {
+//     for (let i = 0; i < rooms.length; i++) {
+//         for (let j = 0; j < rooms[i].length; j++) {
+//             if (rooms[i][j] === 0) {
+//                 dfs(i, j, 0, rooms);
+//             }
+//         }
+//     }
+// }
+
+// function dfs(row, col, distance, rooms) {
+//     if (row < 0 || row >= rooms.length || col < 0 || col >= rooms[row].length || rooms[row][col] < distance) {
+//         return;
+//     }
+//     rooms[row][col] = distance;
+//     dfs(row + 1, col, distance + 1, rooms);
+//     dfs(row - 1, col, distance + 1, rooms);
+//     dfs(row, col + 1, distance + 1, rooms);
+//     dfs(row, col - 1, distance + 1, rooms);
+// }
+
 function repopulateGrid(rooms) {
-    for (let i = 0; i < rooms.length; i++) {
-        for (let j = 0; j < rooms[i].length; j++) {
+    let rows = rooms.length;
+    let cols = rooms[0].length;
+    let queue = [];
+    let dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
             if (rooms[i][j] === 0) {
-                dfs(i, j, 0, rooms);
+                queue.push([i,j]);
             }
         }
     }
-}
 
-function dfs(row, col, distance, rooms) {
-    if (row < 0 || row >= rooms.length || col < 0 || col >= rooms[row].length || rooms[row][col] < distance) {
-        return;
+    while (queue.length) {
+        let curr = queue.shift();
+        let currRow = curr[0];
+        let currCol = curr[1];
+
+        for (dir of dirs) {
+            let nextRow = dir[0] + currRow;
+            let nextCol = dir[1] + currCol;
+
+            if (nextRow < 0 || nextRow >= rows || nextCol < 0 || nextCol >= cols || rooms[nextRow][nextCol] !== 2147483647) continue;
+            rooms[nextRow][nextCol] = rooms[currRow][currCol] + 1;
+            queue.push([nextRow, nextCol]); 
+        }
     }
-    rooms[row][col] = distance;
-    dfs(row + 1, col, distance + 1, rooms);
-    dfs(row - 1, col, distance + 1, rooms);
-    dfs(row, col + 1, distance + 1, rooms);
-    dfs(row, col - 1, distance + 1, rooms);
 }
 
 rooms = [
