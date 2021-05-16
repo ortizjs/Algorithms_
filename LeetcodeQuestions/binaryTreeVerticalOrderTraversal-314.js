@@ -14,9 +14,9 @@
 var verticalOrder = function(root) {
     if (!root) return [];
     let res = [];
-    let queue = [[root, 1]];
+    let queue = [[root, 0]];
     let map = {};
-    
+    let min = 0, max = 0;
     while (queue.length) {
         let nodePair = queue.shift();
         let node = nodePair[0];
@@ -27,13 +27,19 @@ var verticalOrder = function(root) {
             }
             map[col].push(node.val);
             
-            if (node.left) queue.push([node.left, col - 1]);
-            if (node.right) queue.push([node.right, col + 1]);
+            if (node.left) {
+                queue.push([node.left, col - 1]);
+                min = Math.min(min, col - 1);
+            }
+
+            if (node.right) {
+                queue.push([node.right, col + 1]);
+                max = Math.max(max, col + 1);
+            }
         }
     }
-    let sortedKeys = Object.keys(map).sort((a,b) => a - b)
 
-    for (let k of sortedKeys) {
+    for (let k = min; k <= max; k++) {
         res.push(map[k])
     }    
     return res;
