@@ -1,17 +1,19 @@
-function subsets(numsArray) {
-    let results = [];
-    return generateSubsets([], numsArray, results);
-}
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    if (!nums.length || nums === null) return [[]];
+    let sets = [];
+    
+    generateSubsets(nums, 0, [], sets);
+    return sets;
+};
 
-
-function generateSubsets(temp, rest, results) {
-    results.push(temp);
-    for (let i = 0; i < rest.length; i++) {
-        generateSubsets(temp.concat(rest[i]), rest.slice(i + 1), results);
+function generateSubsets(nums, idx, current, sets) {
+    sets.push(Array.from(current));
+    
+    for (let i = idx; i < nums.length; i++) {
+        generateSubsets(nums, i + 1, [...current, nums[i]], sets);
     }
-    return results;
 }
-
-console.log(subsets([1,2,3]))
-console.log(subsets([1,2,3,4]))
-console.log(subsets([1,2,3,4,5,6,7]))
