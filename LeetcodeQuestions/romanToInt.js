@@ -31,6 +31,23 @@ var romanToInt = function (s) {
     return counter;
 };
 
+function romanToInt3(s) {
+    let bases = { "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000 };
+    let n = s.length - 1;
+    let i = n - 1;
+    let sum = bases[s[n]];
+
+    while (i >= 0) {
+        if (bases[s[i]] < bases[s[i + 1]]) {
+            sum -= bases[s[i]];
+        } else {
+            sum += bases[s[i]]
+        }
+        i--;
+    }
+    return sum;
+}
+
 
 var romanToInt2 = function (s) {
     let bases = {
@@ -82,6 +99,12 @@ console.log(romanToInt2("IV"))
 console.log(romanToInt2("IX"))
 console.log(romanToInt2("LVIII"))
 console.log(romanToInt2("MCMXCIV"))
+
+console.log(romanToInt3("III"))
+console.log(romanToInt3("IV"))
+console.log(romanToInt3("IX"))
+console.log(romanToInt3("LVIII"))
+console.log(romanToInt3("MCMXCIV"))
 /*
 As we are iterating over the chars, for every char that is either:
     - I: we can check if the next char is V or X and if so, return either 4 or 9
