@@ -9,6 +9,8 @@
 /**
  * @param {TreeNode} root
  * @return {number[][]}
+ * Time: O(n) where n is the total number of nodes in the tree as we have to visit each individual node.
+ * Space: O(n) for the hashmap and the queue used to traverse the tree.
  */
 
 var verticalOrder = function(root) {
