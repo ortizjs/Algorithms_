@@ -1,18 +1,22 @@
-function lengthOfLongestSubstring(s) {
-    let i = 0, j = 0;
-    let longest = 0;
-    let repeated = new Set();
+/**
+ * @param {string} s
+ * @return {number}
+ * Time: O(n) n for the length of input str.
+ * Space: O(min(m,n)). Same as the previous approach.
+ */
+var lengthOfLongestSubstring = function(s) {
+    let ans = 0;
+    if (!s.length || s === null) return ans;
 
-    while (j < s.length) {
-        let char = s[j];
-        if (!repeated.has(char)) {
-            repeated.add(char);
-            j++;
-            longest = Math.max(longest, j - i)
-        } else {
-            repeated.delete(s[i]);
-            i++;
+    let map = new Map();
+
+    for (let i = 0, j = 0; j < s.length; j++) {
+        let currentChar = s.charAt(j);
+        if (map.has(currentChar)) {
+            i = Math.max(map.get(currentChar), i);
         }
+        ans = Math.max(ans, j - i + 1);
+        map.set(currentChar, j + 1);
     }
-    return longest
-}
+    return ans;
+};
