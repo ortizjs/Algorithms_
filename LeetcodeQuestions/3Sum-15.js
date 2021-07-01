@@ -10,7 +10,7 @@ var threeSum = function(nums) {
     let res = [];
     let sorted = nums.sort((a,b) => a - b);
     
-    for (let i = 0; i < nums.length - 1; i++) {
+    for (let i = 0; i < nums.length - 3; i++) {
         if (i === 0 || (i > 0 && sorted[i] !== sorted[i - 1])) {
             let low = i + 1;
             let high = sorted.length - 1;
