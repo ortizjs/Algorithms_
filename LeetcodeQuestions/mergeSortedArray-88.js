@@ -4,6 +4,8 @@
  * @param {number[]} nums2
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
+ * Time: O(n + m) as we potentially need to traverse both array for which nums1.lenth === m and nums2.lenth === n;
+ * Space: O(1) as there is no additional copied array, we do it inplace; 
  */
 var merge = function(nums1, m, nums2, n) {
     m--;
