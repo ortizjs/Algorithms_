@@ -9,14 +9,17 @@ var validIPAddress = function(IP) {
     let count = 0;
     if (IP.indexOf(":") === -1) {
         let splitted = IP.split(".");
+
         for (let p of splitted) {
             count++;
-            if (count > 4 || !p.length || (p.length > 1 && p.charAt(0) === "0") || p.length > 4) return "Neither";
-            for (let c of p) {
-                if (c < "0" || c > "9") return "Neither";
+            if (count > 4 || !p.length || (p.length > 1 && p.charAt(0) === "0") || p.length > 4) {
+                return "Neither";
             }
-            let value = parseInt(p);
-            if (p < 0 || p > 255) return "Neither"
+            for (let c of p) {
+                if (c < "0" || c > "9" ) return "Neither";
+                let value = parseInt(p);
+                if (value < 0 || value > 255) return "Neither";
+            }
         }
         return count === 4 && IP.charAt(IP.length - 1) !== "." ? "IPv4" : "Neither"
     } else {
@@ -25,10 +28,12 @@ var validIPAddress = function(IP) {
             count++;
             if (count > 8 || !p.length || p.length > 4) return "Neither";
             for (let c of p) {
-                if ((c < "a" || c > "f") && (c < "A" || c > "F") && (c < "0" || c > "9")) return "Neither"
+                if ((c < "a" || c > "f") && (c < "A" || c > "F") && (c < "0" || c > "9")) {
+                    return "Neither";
+                }
             }
         }
-        return count === 8 && IP.charAt(IP.length - 1) !== ":" ? "IPv6" : "Neither";
+        return count === 8 && IP.charAt(IP.length - 1) !== ":" ? "IPv6" : "Neither";    
     }
 };
 
